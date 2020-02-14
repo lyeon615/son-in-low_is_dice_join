@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,13 +10,18 @@
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, maximum-scale=1">
 
-<link rel="stylesheet" type="text/css" href="resources/css/roboto-font.css">
+<link rel="stylesheet" href="resources/css/join/background.css" />
+
+<link rel="stylesheet" type="text/css"
+	href="resources/css/join/roboto-font.css">
 <link rel="stylesheet" type="text/css"
 	href="fonts/material-design-iconic-font/css/material-design-iconic-font.min.css">
 
-<link rel="stylesheet" type="text/css" href="resources/css/jquery-ui.min.css">
+<link rel="stylesheet" type="text/css"
+	href="resources/css/join/jquery-ui.min.css">
 
-<link rel="stylesheet" href="resources/css/style.css" />
+<link rel="stylesheet" href="resources/css/join/style.css" />
+
 
 </head>
 <body>
@@ -25,8 +31,8 @@
 		<div class="wizard-v3-content">
 			<div class="wizard-form">
 				<div class="wizard-header">
-					<h3 class="heading">Sign Up Your User Account</h3>
-					<p>Fill all form field to go next step</p>
+					<h3 class="heading">내 사위는 주사위</h3>
+					<p>회원가입 페이지</p>
 				</div>
 				<form class="form-register" action="#" method="post">
 					<div id="form-total">
@@ -37,20 +43,20 @@
 						</h2>
 						<section>
 							<div class="inner">
-								<h3>Account Information:</h3>
+								<h3>가입 정보:</h3>
 								<div class="form-row">
 									<div class="form-holder form-holder-2">
 										<label class="form-row-inner"> <input type="text"
-											name="email" id="email" class="form-control" required>
-											<span class="label">Email Address</span> <span class="border"></span>
+											name="m_id" id="m_id" class="form-control" required>
+											<span class="label">아이디</span> <span class="border"></span>
 										</label>
 									</div>
 								</div>
 								<div class="form-row">
 									<div class="form-holder form-holder-2">
 										<label class="form-row-inner"> <input type="text"
-											class="form-control" id="username" name="username" required>
-											<span class="label">Username</span> <span class="border"></span>
+											class="form-control" id="m_nick" name="m_nick" required>
+											<span class="label">닉네임</span> <span class="border"></span>
 										</label>
 									</div>
 								</div>
@@ -58,7 +64,7 @@
 									<div class="form-holder form-holder-2">
 										<label class="form-row-inner"> <input type="password"
 											name="password_1" id="password_1" class="form-control"
-											required> <span class="label">Password</span> <span
+											required> <span class="label">비밀번호</span> <span
 											class="border"></span>
 										</label>
 									</div>
@@ -67,8 +73,8 @@
 									<div class="form-holder form-holder-2">
 										<label class="form-row-inner"> <input type="password"
 											name="comfirm_password_1" id="comfirm_password_1"
-											class="form-control" required> <span class="label">Comfirm
-												Password</span> <span class="border"></span>
+											class="form-control" required> <span class="label">비밀번호
+												확인</span> <span class="border"></span>
 										</label>
 									</div>
 								</div>
@@ -81,67 +87,81 @@
 						</h2>
 						<section>
 							<div class="inner">
-								<h3>Personal Information:</h3>
+								<h3>개인 정보:</h3>
 								<div class="form-row">
 									<div class="form-holder">
 										<label class="form-row-inner"> <input type="text"
-											class="form-control" id="first_name" name="first_name"
-											required> <span class="label">First Name*</span> <span
-											class="border"></span>
-										</label>
-									</div>
-									<div class="form-holder">
-										<label class="form-row-inner"> <input type="text"
-											class="form-control" id="last_name" name="last_name" required>
-											<span class="label">Last Name*</span> <span class="border"></span>
+											class="form-control" id="m_name" name="m_name" required>
+											<span class="label">이름</span> <span class="border"></span>
 										</label>
 									</div>
 								</div>
 								<div class="form-row">
 									<div id="radio">
-										<label>Gender*:</label> <input type="radio" name="gender"
-											value="male" checked class="radio-1"> Male <input
-											type="radio" name="gender" value="female"> Female
+										<label>성별:</label> <input type="radio" name="m_gender"
+											value="female" checked class="radio-1"> Female <input
+											type="radio" name="m_gender" value="male"> Male
 									</div>
 								</div>
 								<div class="form-row form-row-date">
 									<div class="form-holder form-holder-2">
-										<label for="date" class="special-label">Date of
-											Birth*:</label> <select name="date" id="date">
+										<label for="date" class="special-label">생년월일:</label> <select
+											name="date" id="date">
 											<option value="Day" disabled selected>Day</option>
-											<option value="16">16</option>
-											<option value="17">17</option>
-											<option value="18">18</option>
-											<option value="19">19</option>
+											<c:forEach var="feach" begin="1" end="31" step="1">
+												<option value="${feach}">${feach}</option>
+											</c:forEach>
 										</select> <select name="month" id="month">
 											<option value="Month" disabled selected>Month</option>
-											<option value="Feb">Feb</option>
-											<option value="Mar">Mar</option>
-											<option value="Apr">Apr</option>
-											<option value="May">May</option>
+											<c:forEach var="feach" begin="1" end="12" step="1">
+												<option value="${feach}">${feach}</option>
+											</c:forEach>
 										</select> <select name="year" id="year">
 											<option value="Year" disabled selected>Year</option>
-											<option value="2017">2017</option>
-											<option value="2016">2016</option>
-											<option value="2015">2015</option>
-											<option value="2014">2014</option>
-											<option value="2013">2013</option>
+											<c:forEach var="feach" begin="1930" end="2020" step="1">
+												<option value="${feach}">${feach}</option>
+											</c:forEach>
 										</select>
+									</div>
+								</div>
+
+								<div class="form-row">
+									<div class="form-holder form-holder-2">
+										<label class="form-row-inner"> <input type="text"
+											class="form-control" id="m_phone" name="m_phone" required>
+											<span class="label">핸드폰 번호</span> <span class="border"></span>
+										</label>
 									</div>
 								</div>
 								<div class="form-row">
 									<div class="form-holder form-holder-2">
 										<label class="form-row-inner"> <input type="text"
-											class="form-control" id="phone" name="phone" required>
-											<span class="label">Phone Number*</span> <span class="border"></span>
+											name="m_email" id="m_email" class="form-control" required>
+											<span class="label">이메일 주소</span> <span class="border"></span>
 										</label>
 									</div>
 								</div>
 								<div class="form-row">
 									<div class="form-holder form-holder-1">
 										<label class="form-row-inner"> <input type="text"
-											class="form-control" id="address" name="address" required>
-											<span class="label">Address*</span> <span class="border"></span>
+											class="form-control" id="m_post" name="m_post" required>
+											<span class="label">우편번호</span> <span class="border"></span>
+										</label>
+									</div>
+								</div>
+								<div class="form-row">
+									<div class="form-holder form-holder-1">
+										<label class="form-row-inner"> <input type="text"
+											class="form-control" id="m_addr1" name="m_addr1" required>
+											<span class="label">주소</span> <span class="border"></span>
+										</label>
+									</div>
+								</div>
+								<div class="form-row">
+									<div class="form-holder form-holder-1">
+										<label class="form-row-inner"> <input type="text"
+											class="form-control" id="m_addr2" name="m_addr2" required>
+											<span class="label">상세주소</span> <span class="border"></span>
 										</label>
 									</div>
 								</div>
@@ -149,61 +169,49 @@
 						</section>
 
 						<h2>
-							<span class="step-icon"><i class="zmdi zmdi-card"></i></span> <span
-								class="step-text">Payment</span>
+							<span class="step-icon"><i class="zmdi zmdi-account"></i></span>
+							<span class="step-text">Detail</span>
 						</h2>
 						<section>
 							<div class="inner">
-								<h3>Payment Information:</h3>
+								<h3>추가 정보:</h3>
 								<div class="form-row">
-									<div class="form-holder form-holder-2">
-										<input type="radio" name="radio1" id="pay-1" value="pay-1"
-											checked> <label class="pay-1-label" for="pay-1"><img
-											src="images/wizard_v3_icon_1.png" alt="pay-1">Credit
-											Card</label> <input type="radio" name="radio1" id="pay-2"
-											value="pay-2"> <label class="pay-2-label" for="pay-2"><img
-											src="images/wizard_v3_icon_2.png" alt="pay-2">Paypal</label>
+									<div id="radio">
+										<label>SMS수신여부:</label> <input type="radio" name="m_re_sms"
+											value="y"> Yes <input type="radio" name="m_re_sms"
+											value="n" checked class="radio-1"> No
+									</div>
+								</div>
+
+								<div class="form-row">
+									<div id="radio">
+										<label>메일수신여부:</label> <input type="radio" name="m_re_notice"
+											value="y"> Yes <input type="radio" name="m_re_notice"
+											value="n" checked class="radio-1"> No
 									</div>
 								</div>
 								<div class="form-row">
-									<div class="form-holder form-holder-2">
-										<label class="form-row-inner"> <input type="text"
-											class="form-control" id="holder" name="holder" required>
-											<span class="label">Holder Name*</span> <span class="border"></span>
-										</label>
+									<div id="radio">
+										<label>쪽지수신여부:</label> <input type="radio" name="m_re_message"
+											value="y"> Yes <input type="radio"
+											name="m_re_message" value="n" checked class="radio-1">
+										No
+									</div>
+								</div>
+
+								<div class="form-row">
+									<div id="radio">
+										<label>회원정보공개여부:</label> <input type="radio" name="m_info"
+											value="y"> Yes <input type="radio" name="m_info"
+											value="n" checked class="radio-1"> No
 									</div>
 								</div>
 								<div class="form-row">
-									<div class="form-holder">
+									<div class="form-holder form-holder-1">
 										<label class="form-row-inner"> <input type="text"
-											class="form-control" id="card" name="card" required>
-											<span class="label">Card Number*</span> <span class="border"></span>
+											class="form-control" id="m_self" name="m_self" required>
+											<span class="label">자기소개</span> <span class="border"></span>
 										</label>
-									</div>
-									<div class="form-holder">
-										<label class="form-row-inner"> <input type="text"
-											class="form-control" id="cvc" name="cvc" required> <span
-											class="label">CVC*</span> <span class="border"></span>
-										</label>
-									</div>
-								</div>
-								<div class="form-row form-row-date form-row-date-1">
-									<div class="form-holder form-holder-2">
-										<label for="date" class="special-label">Expiry Date*:</label>
-										<select name="month_1" id="month_1">
-											<option value="Month" disabled selected>Month</option>
-											<option value="Feb">Feb</option>
-											<option value="Mar">Mar</option>
-											<option value="Apr">Apr</option>
-											<option value="May">May</option>
-										</select> <select name="year_1" id="year_1">
-											<option value="Year" disabled selected>Year</option>
-											<option value="2017">2017</option>
-											<option value="2016">2016</option>
-											<option value="2015">2015</option>
-											<option value="2014">2014</option>
-											<option value="2013">2013</option>
-										</select>
 									</div>
 								</div>
 							</div>
@@ -215,37 +223,66 @@
 						</h2>
 						<section>
 							<div class="inner">
-								<h3>Confirm Details:</h3>
+								<h3>확인:</h3>
 								<div class="form-row table-responsive">
 									<table class="table">
 										<tbody>
 											<tr class="space-row">
-												<th>Full Name:</th>
-												<td id="fullname-val"></td>
+												<th>이름:</th>
+												<td id="m_name-val"></td>
 											</tr>
 											<tr class="space-row">
-												<th>Email Address:</th>
-												<td id="email-val"></td>
+												<th>아이디:</th>
+												<td id="m_id-val"></td>
 											</tr>
 											<tr class="space-row">
-												<th>Phone Number:</th>
-												<td id="phone-val"></td>
+												<th>닉네임:</th>
+												<td id="m_nick-val"></td>
 											</tr>
 											<tr class="space-row">
-												<th>User:</th>
-												<td id="username-val"></td>
+												<th>성별:</th>
+												<td id="m_gender-val"></td>
+											</tr>
+											<!-- <tr class="space-row">
+												<th>생년월일:</th>
+												<td id="m_birth-val"></td>
+											</tr> -->
+											<tr class="space-row">
+												<th>전화번호:</th>
+												<td id="m_phone-val"></td>
 											</tr>
 											<tr class="space-row">
-												<th>Gender:</th>
-												<td id="gender-val"></td>
+												<th>이메일:</th>
+												<td id="m_email-val"></td>
 											</tr>
 											<tr class="space-row">
-												<th>Address:</th>
-												<td id="address-val"></td>
+												<th>우편번호:</th>
+												<td id="m_post-val"></td>
+											</tr>
+											
+											<tr class="space-row">
+												<th>주소:</th>
+												<td id="m_addr-val"></td>
 											</tr>
 											<tr class="space-row">
-												<th>Card Type:</th>
-												<td id="pay-val">Credit Card</td>
+												<th>쪽지수신여부:</th>
+												<td id="m_re_sms-val"></td>
+											</tr>
+											<tr class="space-row">
+												<th>메일수신여부:</th>
+												<td id="m_re_notice-val"></td>
+											</tr>
+											<tr class="space-row">
+												<th>쪽지수신여부:</th>
+												<td id="m_re_message-val"></td>
+											</tr>
+											<tr class="space-row">
+												<th>회원정보공개여부:</th>
+												<td id="m_info-val"></td>
+											</tr>
+											<tr class="space-row">
+												<th>자기소개:</th>
+												<td id="m_self-val"></td>
 											</tr>
 										</tbody>
 									</table>
@@ -257,10 +294,10 @@
 			</div>
 		</div>
 	</div>
-	<script src="resources/js/jquery-3.3.1.min.js"></script>
-	<script src="resources/js/jquery.steps.js"></script>
-	<script src="resources/js/jquery-ui.min.js"></script>
-	<script src="resources/js/main.js"></script>
+	<script src="resources/js/join/jquery-3.3.1.min.js"></script>
+	<script src="resources/js/join/jquery.steps.js"></script>
+	<script src="resources/js/join/jquery-ui.min.js"></script>
+	<script src="resources/js/join/main.js"></script>
 
 	<script async
 		src="https://www.googletagmanager.com/gtag/js?id=UA-23581568-13"></script>
